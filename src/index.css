@@ -208,21 +208,6 @@ h2 {
   color: var(--rating-gold);
 }
 
-.cover-verdict {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 1.5rem 0.4rem 0.45rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.88));
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .dialog-backdrop {
   position: fixed;
   inset: 0;
@@ -307,18 +292,11 @@ h2 {
 
 .site-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem 1.5rem;
+  padding: 1.75rem 1.5rem 2.25rem;
   border-top: 1px solid var(--border);
   color: var(--text-muted);
-}
-
-.footer-mark {
-  margin: 0;
-  font-weight: 700;
-  color: var(--accent);
 }
 
 .social-links {
@@ -341,8 +319,7 @@ h2 {
 }
 
 @media (max-width: 640px) {
-  .site-header,
-  .site-footer {
+  .site-header {
     flex-direction: column;
     align-items: flex-start;
   }

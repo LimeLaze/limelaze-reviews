@@ -31,11 +31,6 @@ export function CoverCard({ review }: CoverCardProps) {
           {review.rating}/10
         </span>
       )}
-      {review.recommended != null && (
-        <span className={review.recommended ? 'cover-verdict is-recommended' : 'cover-verdict is-not-recommended'}>
-          {review.recommended ? 'Recommended' : 'Not recommended'}
-        </span>
-      )}
     </Link>
   )
 }
