@@ -1,9 +1,8 @@
 name: Deploy GitHub Pages
 
 on:
-  # Disabled for now until you are ready to publish GitHub Pages.
-  # push:
-  #   branches: [main, master]
+  push:
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
