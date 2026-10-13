@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import { Footer } from './components/Footer'
-import { YearNav } from './components/YearNav'
+import { HeaderNav } from './components/HeaderNav'
 import { useSiteData } from './hooks/useSiteData'
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
         <Link className="site-title" to="/">
           Lime's Den of Reviews
         </Link>
-        {data && <YearNav years={data.site.years} />}
+        {data && <HeaderNav years={data.site.years} />}
       </header>
       <main id="main" className="site-main">
         {error && <p className="load-error">{error}</p>}

@@ -19,6 +19,29 @@ export type GameReview = {
   postedOn?: string
   body: string
   recommended?: boolean
+  /** Single-sentence summary or review verdict (e.g. "A masterpiece from start to finish"). */
+  verdict?: string
+  /** Alias for verdict. */
+  summary?: string
   /** Whole number from 0 to 10. Omit when the game has no score. */
   rating?: number
 }
+
+export type Top20Game = {
+  rank: number
+  title: string
+  description: string
+  coverUrl: string
+}
+
+export type Top20Data = {
+  comments?: string
+  intro?: string
+  games: Top20Game[]
+}
+
+export type AboutData = {
+  title: string
+  content: string
+}
+

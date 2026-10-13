@@ -47,6 +47,11 @@ export function ReviewDialog({ review, onClose }: ReviewDialogProps) {
     return null
   }
 
+  const verdictText =
+    review.verdict ??
+    review.summary ??
+    (review.recommended != null ? (review.recommended ? 'Recommended' : 'Not recommended') : null)
+
   return (
     <div className="dialog-backdrop" onClick={onClose} role="presentation">
       <div
@@ -73,9 +78,9 @@ export function ReviewDialog({ review, onClose }: ReviewDialogProps) {
         <div className="dialog-body">
           <p className="dialog-year">{postedLabel(review)}</p>
           <h2 id="review-title">{review.title}</h2>
-          {review.recommended != null && (
-            <p className={review.recommended ? 'dialog-verdict is-recommended' : 'dialog-verdict is-not-recommended'}>
-              {review.recommended ? 'Recommended' : 'Not recommended'}
+          {verdictText && (
+            <p className={review.recommended === false ? 'dialog-verdict is-not-recommended' : 'dialog-verdict is-recommended'}>
+              {verdictText}
             </p>
           )}
           <p className="dialog-text">{review.body}</p>

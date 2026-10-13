@@ -18,6 +18,12 @@ export function YearPage() {
   const { reviews } = useLayoutData()
   const year = parseYear(yearParam)
 
+  const closeDialog = useCallback(() => {
+    if (year != null) {
+      void navigate(`/${year}`)
+    }
+  }, [navigate, year])
+
   if (year == null) {
     return <Navigate to="/" replace />
   }
@@ -26,13 +32,9 @@ export function YearPage() {
   const openReview = slug
     ? (yearReviews.find((review) => review.slug === slug) ?? null)
     : null
-  const closeDialog = useCallback(() => {
-    void navigate(`/${year}`)
-  }, [navigate, year])
 
   return (
     <section className="year-page">
-      <h1 className="visually-hidden">{year} reviews</h1>
       <ReviewGrid year={year} reviews={yearReviews} />
       <ReviewDialog review={openReview} onClose={closeDialog} />
     </section>

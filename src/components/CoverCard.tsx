@@ -10,7 +10,10 @@ function coverLabel(review: GameReview): string {
   if (review.rating != null) {
     parts.push(`rated ${review.rating} out of 10`)
   }
-  if (review.recommended != null) {
+  const verdict = review.verdict ?? review.summary
+  if (verdict) {
+    parts.push(verdict)
+  } else if (review.recommended != null) {
     parts.push(review.recommended ? 'recommended' : 'not recommended')
   }
   return parts.join(', ')

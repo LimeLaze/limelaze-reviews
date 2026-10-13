@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { fetchReviews, fetchSite } from '../api/data'
 import type { GameReview, SiteConfig } from '../types'
+import { sortReviews } from '../utils/reviewSort'
 
 export type SiteData = {
   site: SiteConfig
@@ -20,7 +21,7 @@ export function useSiteData(): {
     Promise.all([fetchSite(), fetchReviews()])
       .then(([site, reviews]) => {
         if (!cancelled) {
-          setData({ site, reviews })
+          setData({ site, reviews: sortReviews(reviews, 'release') })
         }
       })
       .catch((cause: unknown) => {

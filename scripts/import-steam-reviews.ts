@@ -212,12 +212,19 @@ async function main(): Promise<void> {
     ),
   )
 
+  const verdicts = new Map(
+    existing.flatMap((review) =>
+      review.steamAppId != null && review.verdict != null ? [[review.steamAppId, review.verdict] as const] : [],
+    ),
+  )
+
   const parsed = await fetchReviewsSince(MIN_YEAR)
   const imported: GameReview[] = []
 
   for (const review of parsed) {
     const app = await fetchAppInfo(review.steamAppId)
     const rating = ratings.get(review.steamAppId)
+    const verdict = verdicts.get(review.steamAppId) ?? (review.recommended ? 'Recommended' : 'Not recommended')
     imported.push({
       id: `steam-${review.steamAppId}`,
       slug: uniqueSlug(app.name, review.steamAppId, usedSlugs),
@@ -228,6 +235,7 @@ async function main(): Promise<void> {
       postedOn: review.postedOn,
       body: review.body,
       recommended: review.recommended,
+      verdict,
       ...(rating != null ? { rating } : {}),
     })
     console.log(`${review.postedOn}  ${app.name}`)

@@ -20,7 +20,7 @@ The site will open locally on `http://localhost:5173/` (or port 5174 if 5173 is 
 - Steam omits the year on dates from the current calendar year, and includes it on older ones (`Posted 11 October.` vs `Posted 6 June, 2021.`).
 - The script uses the **posted date**, not the last-edited date.
 - Hand-written reviews stay in the file. Imported ones use an id like `steam-1677310` and are refreshed on subsequent imports.
-- Any scores (`rating`) previously added to a Steam review entry in `reviews.json` are preserved across imports.
+- Any scores (`rating`) or custom single-sentence summaries (`verdict`) previously added to a Steam review entry in `reviews.json` are preserved across imports.
 
 ---
 
@@ -39,17 +39,76 @@ Edit `public/data/reviews.json`. Each entry follows this structure:
   "postedOn": "2026-10-12",
   "body": "First paragraph.\n\nSecond paragraph.",
   "recommended": true,
+  "verdict": "A roguelike masterpiece with endless charm and polish.",
   "rating": 10
 }
 ```
 
 - **`body`**: The full review essay. Blank lines (`\n\n`) render as clean paragraph breaks. There is no length limit; long reviews will scroll cleanly within the dialog.
+- **`postedOn`** *(optional, YYYY-MM-DD)*: The release/posted date of the review. The site automatically parses this date and sorts the grid chronologically (newest first). You can paste or append new entries anywhere in `reviews.json` (top or bottom), and they will automatically appear in their exact chronological position on the site!
+- **`verdict`** *(optional)*: An easy-to-edit single sentence summarizing your review (or custom verdict phrase). It displays right beneath the game title in the review dialog in Steam Blue, styled slightly larger than body text for emphasis. If omitted, it falls back to `"Recommended"` or `"Not recommended"`.
 - **`rating`** *(optional)*: A whole number from 0 to 10.
-  - A rating of `10` displays in **Gold Yellow**.
-  - Ratings from 0 to 9 display in **Lime Green**.
+  - A rating of `10` displays in **Gold Yellow** (`#ffd700`).
+  - Ratings from 0 to 9 display in crisp **Plain White** (`#ffffff`, easily customizable via `--rating-normal` in `src/index.css`).
   - Omit this field if the game has no numerical score, and the cover top-left will remain clean.
-- **`recommended`** *(optional)*: `true` (Steam Blue "Recommended") or `false` (Red "Not recommended"). This verdict is displayed inside the review dialog modal.
+- **`recommended`** *(optional)*: `true` (Steam Blue) or `false` (Red).
 - **`coverUrl`**: URL of the cover image. For Steam games, the library capsule pattern is `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/<APP_ID>/library_600x900.jpg`. Custom images can also be placed in `public/` and referenced as `/your-image.png`.
+
+---
+
+## My Top 20 Games of All Time
+
+The Top 20 list is located at `/top-20` and configured in `public/data/top20.json`.
+
+```json
+{
+  "comments": "Type here",
+  "games": [
+    {
+      "rank": 1,
+      "title": "Game Title",
+      "description": "Why it's in your top 20...",
+      "coverUrl": "..."
+    }
+  ]
+}
+```
+
+- **`comments`**: Write down your thoughts, introduction, or general comments about your top 20 list. Displays directly beneath the page title with preserved line breaks.
+- It is a standalone ranked list from 1 to 20 that lives independently from the annual review grids.
+- Each entry in `games` has:
+  - `rank`: Number from 1 to 20.
+  - `title`: The title of the game.
+  - `description`: A short review or explanation of why it made your top 20.
+  - `coverUrl`: Path or URL to the cover picture. Default placeholder cover is `/placeholder-cover.svg`. You can place your own images in `public/` (e.g. `/mygame.jpg`) or paste direct Steam/web image URLs.
+- The rank number `#1` is highlighted in gold, and all text is immediately visible without needing to click into dialogs.
+
+---
+
+## About Me Page (Currently Hidden)
+
+The About Me page is located at `/about` and configured in `public/data/about.json`.
+
+```json
+{
+  "title": "About Me",
+  "content": "Type here"
+}
+```
+
+- Clean, centered card matching the aesthetics of the Top 20 section without images.
+- All code (`src/pages/AboutPage.tsx`, route in `src/main.tsx`, and CSS) is kept in place.
+- The link in the header is commented out in `src/components/HeaderNav.tsx`. Whenever you're ready to show it, just uncomment the `<NavLink to="/about">` in `src/components/HeaderNav.tsx`.
+
+---
+
+## Grid Sorting & Mobile Layout
+
+- **Sorting buttons**: Directly below the year title (`Game's I've played in {year}`), three small centered buttons allow sorting reviews on the fly:
+  1. **Release Order**: Chronological order the reviews were posted (default).
+  2. **Rating**: Highest score first (10 down to 0), with ties broken by review release order.
+  3. **Alphabetical**: Alphabetical (A–Z) by game title.
+- **Mobile view**: When viewed on phones (screen width ≤ 640px), the grid automatically aligns **3 games next to each other per row** with optimized gaps and badge sizes.
 
 ---
 
