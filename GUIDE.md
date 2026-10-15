@@ -104,10 +104,39 @@ The About Me page is located at `/about` and configured in `public/data/about.js
 
 ## Grid Sorting & Mobile Layout
 
-- **Sorting buttons**: Directly below the year title (`Game's I've played in {year}`), three small centered buttons allow sorting reviews on the fly:
-  1. **Release Order**: Chronological order the reviews were posted (default).
-  2. **Rating**: Highest score first (10 down to 0), with ties broken by review release order.
-  3. **Alphabetical**: Alphabetical (A–Z) by game title.
+Directly below the year title (`Games I've played in {year}`), four small centered buttons allow sorting reviews on the fly, with an editable description displayed directly beneath the buttons:
+
+1. **Release Order**: Chronological order the reviews were posted (newest to oldest, default).
+2. **Perfectly Ranked**: Your personal definitive ranking from best to worst, configured in `public/data/sorting.json`.
+3. **Rating**: Highest score first (10 down to 0), with ties broken by review release order.
+4. **Alphabetical**: Alphabetical (A–Z) by game title.
+
+### Configuring "Perfectly Ranked" & Sort Descriptions
+
+The sorting behavior, descriptions, and custom ranking order are stored in `public/data/sorting.json`:
+
+```json
+{
+  "descriptions": {
+    "release": "Reviews in order of release date, newest to oldest.",
+    "perfect": "My personal definitive ranking from best to worst.",
+    "rating": "Sorted by rating (10 to 0), with release order breaking ties.",
+    "alphabetical": "Sorted alphabetically by title from A to Z."
+  },
+  "ranking": [
+    "Spiritfarer",
+    "Bloodborne",
+    "Slay the Princess",
+    "In Stars And Time",
+    "..."
+  ]
+}
+```
+
+- **Editable Descriptions**: You can edit any of the four description strings under `"descriptions"` to explain the sorting order in your own words. The description for the active sort mode is rendered centered right between the sort buttons and the game grid.
+- **Reordering "Perfectly Ranked"**: To change the order of games, simply move lines up or down in the `"ranking"` list.
+- **Adding New Games to the Ranking**: When you review a new game, just type its name anywhere into the `"ranking"` list at your desired position. If a game on the grid hasn't been added to the `"ranking"` list yet, it will automatically place after the ranked games at the end of the grid.
+- **Ranking Numbers on Covers**: When viewing the "Perfectly Ranked" sort mode, every cover displays its rank badge (e.g. `#1`, `#2`, `#3`...) at the bottom right. The numbers are white by default. To customize the colors of the top 3 (e.g. gold, silver, bronze), you can adjust `--rank-1-color`, `--rank-2-color`, and `--rank-3-color` in `src/index.css` (or edit `.cover-rank.is-rank-1`, `.is-rank-2`, `.is-rank-3`).
 - **Mobile view**: When viewed on phones (screen width ≤ 640px), the grid automatically aligns **3 games next to each other per row** with optimized gaps and badge sizes.
 
 ---

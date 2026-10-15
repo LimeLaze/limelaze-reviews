@@ -15,7 +15,7 @@ function parseYear(value: string | undefined): number | null {
 export function YearPage() {
   const { year: yearParam, slug } = useParams()
   const navigate = useNavigate()
-  const { reviews } = useLayoutData()
+  const { reviews, sorting } = useLayoutData()
   const year = parseYear(yearParam)
 
   const closeDialog = useCallback(() => {
@@ -35,7 +35,7 @@ export function YearPage() {
 
   return (
     <section className="year-page">
-      <ReviewGrid year={year} reviews={yearReviews} />
+      <ReviewGrid year={year} reviews={yearReviews} sorting={sorting} />
       <ReviewDialog review={openReview} onClose={closeDialog} />
     </section>
   )

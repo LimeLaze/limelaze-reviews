@@ -1,4 +1,4 @@
-import type { GameReview, SiteConfig } from '../types'
+import type { GameReview, SiteConfig, SortingData } from '../types'
 
 function dataUrl(file: string): string {
   return `${import.meta.env.BASE_URL}data/${file}`
@@ -18,4 +18,8 @@ export function fetchSite(): Promise<SiteConfig> {
 
 export function fetchReviews(): Promise<GameReview[]> {
   return fetchJson<GameReview[]>(dataUrl('reviews.json'))
+}
+
+export function fetchSorting(): Promise<SortingData> {
+  return fetchJson<SortingData>(dataUrl('sorting.json'))
 }

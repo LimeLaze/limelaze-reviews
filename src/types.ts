@@ -45,3 +45,13 @@ export type AboutData = {
   content: string
 }
 
+export type SortMode = 'release' | 'perfect' | 'rating' | 'alphabetical'
+
+export type SortingDescriptions = Partial<Record<SortMode, string>>
+
+export type SortingData = {
+  descriptions?: SortingDescriptions
+  ranking?: string[]
+}
+
+

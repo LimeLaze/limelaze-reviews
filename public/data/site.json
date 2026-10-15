@@ -5,8 +5,12 @@
   ],
   "socialLinks": [
     {
-      "label": "My Steam Profile",
+      "label": "Steam",
       "url": "https://steamcommunity.com/id/LimeLaze"
+    },
+    {
+      "label": "Youtube",
+      "url": "https://www.youtube.com/@LimeLaze"
     }
   ]
 }

@@ -1,11 +1,17 @@
 import { useMemo, useState } from 'react'
-import type { GameReview } from '../types'
-import { type SortMode, sortReviews } from '../utils/reviewSort'
+import type { GameReview, SortingData } from '../types'
+import {
+  DEFAULT_RANKING,
+  DEFAULT_SORTING_DESCRIPTIONS,
+  type SortMode,
+  sortReviews,
+} from '../utils/reviewSort'
 import { CoverCard } from './CoverCard'
 
 type ReviewGridProps = {
   year: number
   reviews: GameReview[]
+  sorting?: SortingData
 }
 
 export type { SortMode }
@@ -18,16 +24,22 @@ interface SortOption {
 
 const SORT_OPTIONS: SortOption[] = [
   { id: 'release', label: 'Release Order', title: 'Sort by review release order' },
+  { id: 'perfect', label: 'Perfectly Ranked', title: 'Sort by my personal definitive ranking' },
   { id: 'rating', label: 'Rating', title: 'Sort by rating (highest first)' },
   { id: 'alphabetical', label: 'Alphabetical', title: 'Sort alphabetically (A-Z)' },
 ]
 
-export function ReviewGrid({ year, reviews }: ReviewGridProps) {
+export function ReviewGrid({ year, reviews, sorting }: ReviewGridProps) {
   const [sortMode, setSortMode] = useState<SortMode>('release')
 
+  const rankingList = sorting?.ranking ?? DEFAULT_RANKING
+
   const sortedReviews = useMemo(() => {
-    return sortReviews(reviews, sortMode)
-  }, [reviews, sortMode])
+    return sortReviews(reviews, sortMode, rankingList)
+  }, [reviews, sortMode, rankingList])
+
+  const activeDescription =
+    sorting?.descriptions?.[sortMode] ?? DEFAULT_SORTING_DESCRIPTIONS[sortMode]
 
   if (reviews.length === 0) {
     return (
@@ -42,6 +54,7 @@ export function ReviewGrid({ year, reviews }: ReviewGridProps) {
     <div className="year-grid-section">
       <h1 className="grid-title">Games I've played in {year}</h1>
       <div className="grid-sort-controls" role="group" aria-label="Sort reviews">
+        <span className="sort-label">Sort by</span>
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.id}
@@ -55,10 +68,16 @@ export function ReviewGrid({ year, reviews }: ReviewGridProps) {
           </button>
         ))}
       </div>
+      {activeDescription && (
+        <p className="sort-description">{activeDescription}</p>
+      )}
       <ul className="review-grid">
-        {sortedReviews.map((review) => (
+        {sortedReviews.map((review, index) => (
           <li key={review.id}>
-            <CoverCard review={review} />
+            <CoverCard
+              review={review}
+              rank={sortMode === 'perfect' ? index + 1 : undefined}
+            />
           </li>
         ))}
       </ul>
