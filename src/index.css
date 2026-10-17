@@ -92,6 +92,11 @@ h2 {
   opacity: 0.85;
 }
 
+.site-nav-container {
+  display: flex;
+  align-items: center;
+}
+
 .site-nav {
   display: flex;
   align-items: center;
@@ -161,7 +166,7 @@ h2 {
   visibility: hidden;
   transform: translateY(-4px);
   transition: opacity 140ms ease, transform 140ms ease, visibility 140ms ease;
-  z-index: 30;
+  z-index: 100;
 }
 
 /* Invisible bridge so mouse hover doesn't break between button and menu */
@@ -174,6 +179,7 @@ h2 {
   height: 0.5rem;
 }
 
+.nav-dropdown-menu.is-open,
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown:focus-within .nav-dropdown-menu,
 .nav-dropdown.is-open .nav-dropdown-menu {
@@ -810,14 +816,78 @@ h2 {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
-    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem 0.65rem;
+  }
+
+  .site-nav-container {
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    position: relative;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 24px,
+      black calc(100% - 24px),
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 24px,
+      black calc(100% - 24px),
+      transparent 100%
+    );
+  }
+
+  @supports not (mask-image: linear-gradient(to right, transparent, black)) {
+    .site-nav-container::before,
+    .site-nav-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 24px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .site-nav-container::before {
+      left: 0;
+      background: linear-gradient(to right, var(--bg), transparent);
+    }
+
+    .site-nav-container::after {
+      right: 0;
+      background: linear-gradient(to left, var(--bg), transparent);
+    }
   }
 
   .site-nav {
     width: 100%;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1.25rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.25rem 1.5rem 0.4rem;
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-dropdown,
+  .nav-link,
+  .nav-dropdown-trigger {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .site-main {
