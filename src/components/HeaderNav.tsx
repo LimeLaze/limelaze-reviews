@@ -100,6 +100,16 @@ export function HeaderNav({ years }: HeaderNavProps) {
         My Top 20 Games of All Time
       </NavLink>
 
+      <NavLink
+        to="/every-game"
+        className={({ isActive }) =>
+          isActive ? 'nav-link is-active' : 'nav-link'
+        }
+        onClick={handleLinkClick}
+      >
+        Every Game I've Beaten
+      </NavLink>
+
       {/* "About Me" link hidden for now — code and page are preserved in src/pages/AboutPage.tsx
       <NavLink
         to="/about"

@@ -85,6 +85,39 @@ The Top 20 list is located at `/top-20` and configured in `public/data/top20.jso
 
 ---
 
+## Every Game I've Played
+
+The full lifetime game list is located at `/every-game` and configured in `public/data/every-game.json`. It is accessible directly from the header navigation right after "My Top 20 Games of All Time".
+
+```json
+{
+  "title": "Every Game I've Played",
+  "description": "A complete list of every video game I have played throughout my life.",
+  "games": [
+    "Alan Wake 2",
+    "Animal Crossing: New Horizons",
+    "Ape Escape 2",
+    "Batman: Arkham Asylum"
+  ]
+}
+```
+
+- **Pasting & Adding Games**:
+  - The `"games"` array is a simple list of game names (strings).
+  - You can paste your list in any order or formatting; the site **automatically sorts the list alphabetically (A–Z)** on the page.
+  - This file is completely independent from `reviews.json` and `top20.json`.
+  - Alternatively, if you prefer, you can even save `every-game.json` as a raw array of strings `["Game 1", "Game 2", ...]`; the site supports both formats.
+- **Custom Title & Description**:
+  - Change `"title"` in `public/data/every-game.json` to customize the page title whenever you like.
+  - Change `"description"` in `public/data/every-game.json` to customize the text between the title and search bar. Supports line breaks, and will be styled centered with muted text just like the Top 20 intro and sorting descriptions. If omitted or empty, no description is shown.
+- **Live Search & Fuzzy Subsequence Matching**:
+  - Live filtering: As the user types into the search bar, the list updates instantly without having to press Enter or submit.
+  - Subsequence & punctuation-agnostic search: Characters match in sequence even if the user accidentally adds extra spaces, forgets spaces entirely, or ignores special characters/punctuation (e.g. `hitman world` or `hitmanworld` will match `HITMAN World of Assassination`, `mgs4` will match `METAL GEAR SOLID 4...`, `sekiro shadows` matches `Sekiro™: Shadows Die Twice...`).
+  - Includes an interactive clear (`✕`) button and a real-time counter showing `Showing X of Y games`.
+
+
+---
+
 ## About Me Page (Currently Hidden)
 
 The About Me page is located at `/about` and configured in `public/data/about.json`.

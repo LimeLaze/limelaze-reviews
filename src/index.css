@@ -680,6 +680,132 @@ h2 {
   margin: 0;
 }
 
+/* Every Game I've Played Page */
+.every-game-page {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.every-game-description {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 650px;
+  margin: -1rem auto 1.75rem;
+  white-space: pre-wrap;
+}
+
+.every-game-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 1.5rem;
+}
+
+.search-bar-wrap {
+  position: relative;
+  width: min(480px, 100%);
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.95rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.every-game-search {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--heading);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.65rem 2.4rem 0.65rem 2.5rem;
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.every-game-search::placeholder {
+  color: var(--text-muted);
+}
+
+.every-game-search:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.65rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 0.25rem 0.45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 120ms ease;
+}
+
+.search-clear-btn:hover {
+  color: var(--heading);
+}
+
+.every-game-counter {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.every-game-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.every-game-item {
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.every-game-bullet {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  line-height: 1;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.every-game-name {
+  color: var(--heading);
+  font-size: 0.9rem;
+  font-weight: 450;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+.every-game-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
 @media (max-width: 640px) {
   .site-header {
     flex-direction: column;
@@ -758,6 +884,25 @@ h2 {
     width: 100%;
     max-width: 200px;
     margin: 0 auto;
+  }
+
+  .every-game-description {
+    font-size: 0.82rem;
+    margin: -0.5rem auto 1.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .every-game-controls {
+    margin: 0 0 1.25rem;
+  }
+
+  .every-game-item {
+    padding: 0.42rem 0.25rem;
+    gap: 0.5rem;
+  }
+
+  .every-game-name {
+    font-size: 0.85rem;
   }
 
   .dialog-backdrop {

@@ -45,6 +45,12 @@ export type AboutData = {
   content: string
 }
 
+export type EveryGameData = {
+  title?: string
+  description?: string
+  games: string[]
+}
+
 export type SortMode = 'release' | 'perfect' | 'rating' | 'alphabetical'
 
 export type SortingDescriptions = Partial<Record<SortMode, string>>
