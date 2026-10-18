@@ -1,5 +1,5 @@
 {
-  "comments": "These games are my absolute top 20. Every single one is a 10/10 masterpiece. What makes a game great for me is valued firstly how impactful it has been for me. Most of the time the impactfulness is valued by how good the story is and what the game means for me. The general public often values a masterpiece how every element in a game is great/perfect. So for me the gameplay always doesn't need to be perfect if the story carries the impactful value. Also besides the story I value a good soundtrack a lot.\n\nAnyways please play at least one of these games before your time is up. Video games are the greatest form of entertainment and storytelling. ",
+  "comments": "These games are my absolute top 20 favorite games. What makes a game great for me is valued firstly how impactful it has been for me. Most of the time the impactfulness is valued by how good the story is and what the game means for me. The general public often values a masterpiece how every element in a game is great/perfect. So for me the gameplay always doesn't need to be perfect if the story carries the impactful value. Also besides the story I value a good soundtrack a lot.\n\nAnyways please play at least one of these games before your time is up. Video games are the greatest form of entertainment and storytelling. ",
   "games": [
     {
       "rank": 1,
@@ -69,57 +69,57 @@
   },
   {
     "rank": 12,
-    "title": "Minecraft",
-    "description": "Well it's Minecraft. So many memories and experiences. The game that has been with me the longest. An enviorment where you can basically do anything.",
-    "coverUrl": "https://cdn2.steamgriddb.com/grid/7344bcd24a4a0393f45cad1a212c62e7.png"
-  },
-  {
-    "rank": 13,
     "title": "Slay the Princess",
     "description": "Philosophical and psychological masterpiece. Just give yourself 3 hours and experience this. Has like every emotion there is.",
     "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/1989270/library_600x900_2x.jpg?t=1760978578"
   },
   {
-    "rank": 14,
+    "rank": 13,
     "title": "In Stars And Time",
-    "description": "Perfectly explained the consequences of time travel. Reminded me why I love indie turn-based RPGs. So much impact in such small package.",
+    "description": "One of the most addictive games I've experienced. PGD hits you like a truck when you realize the game ends. I had to limit myself from playing this too much per day. So well written world and characters. Such an unique take on time travel. I want to play this more but at the same time I can't. I would just ruin my experience.",
     "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/1677310/library_600x900_2x.jpg?t=1754151950"
   },
   {
-    "rank": 15,
+    "rank": 14,
     "title": "Metal Gear Solid 4: Guns of the Patriots",
-    "description": "The greatest conclusion to a video game series ever. The build up to this game is something else.",
+    "description": "This game represents the whole franchise for me. So basically this is a shared spot between every mainline Metal Gear Solid game. The forth installment is just the one that made me realize that Kojima created the greatest video game saga there is.",
     "coverUrl": "https://cdn2.steamgriddb.com/grid/ace9a711ea50f530df220c62507e1e38.png"
   },
   {
-    "rank": 16,
-    "title": "Sekiro: Shadows Die Twice",
-    "description": "Not Elden Ring, not Bloodborne but still one of the best soulsborne games. The combat is so unique and satisfying. Hardest game I've ever played. If you beat this enjoy the “Gamer” status hehe.",
-    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/814380/library_600x900_2x.jpg?t=1754933980"
+    "rank": 15,
+    "title": "UNBEATABLE",
+    "description": "The game is not for everyone but the message of the story is. D-CELL GAMES is probably the most passionate game studio I have ever seen. They love their game so so much. And that same love shines to us players. You can see it in the animations. You can hear it in its soundtrack. You can feel it in the story.",
+    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/2240620/8ac1dfb34e4bb5a2408eda2825fcd9513ec29f21/library_600x900_2x.jpg?t=1762424924"
   },
-  {
+    {
+    "rank": 16,
+    "title": "Dark Souls: Remastered",
+    "description": "My comfort game. I don't know why but I can just keep playing this over and over again. Some places like Lost Izalith suck I know but there's just something about this game. A feeling I cannot get anywhere else (except maybe from Bloodborne or Dark Souls III).",
+    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/570940/library_600x900_2x.jpg?t=1700659130"
+  },
+   {
     "rank": 17,
-    "title": "Helldivers 2",
-    "description": "The most satisfying co-op experience. So smooth gameplay with unique humor and great gunplay.",
-    "coverUrl": "https://cdn2.steamgriddb.com/grid/88804947ad9f43ab446f7ed938060ef8.jpg"
+    "title": "Crash Bandicoot 4: It's About Time",
+    "description": "Never have I ever been more excited about a video game than I was when Crash Bandicoot 4 released. I will always remember the hype, the love Toys for Bob put into this game. The feeling when the story finally continues is something else.",
+    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/1378990/library_600x900_2x.jpg?t=1665426671"
   },
   {
     "rank": 18,
-    "title": "UNBEATABLE",
-    "description": "The game is not for everyone but the message of the story is. By the way, every animation in the trailers is real and in game footage.",
-    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/2240620/8ac1dfb34e4bb5a2408eda2825fcd9513ec29f21/library_600x900_2x.jpg?t=1762424924"
-  },
-  {
-    "rank": 19,
     "title": "Balatro",
     "description": "Combining poker and solitaire into a roguelike deck-builder is one of the most simple but greatest ideas I've ever seen. So easy to just pick up and play. Easily the second greatest roguelike/roguelite I've played after Risk of Rain 2.",
     "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/2379780/library_600x900_2x.jpg?t=1758034949"
   },
   {
+    "rank": 19,
+    "title": "Helldivers 2",
+    "description": "The most satisfying co-op experience. So smooth gameplay with unique humor and great gunplay. So many funny memories with the boys.",
+    "coverUrl": "https://cdn2.steamgriddb.com/grid/88804947ad9f43ab446f7ed938060ef8.jpg"
+  },
+  {
     "rank": 20,
-    "title": "The Messenger",
-    "description": "I don't really like metroidvanias but The Messenger executes the concept perfectly for me. From the same studio that created Sea of Stars therefore this game cannot miss.",
-    "coverUrl": "https://shared.steamstatic.com/store_item_assets/steam/apps/764790/library_600x900_2x.jpg?t=1751460473"
+    "title": "Minecraft",
+    "description": "Well it's Minecraft. So many memories and experiences. The game that has been with me the longest. An enviorment where you can basically do anything.",
+    "coverUrl": "https://cdn2.steamgriddb.com/grid/7344bcd24a4a0393f45cad1a212c62e7.png"
   }
 ]
 }
