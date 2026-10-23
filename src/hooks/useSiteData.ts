@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react'
-import { fetchReviews, fetchSite, fetchSorting } from '../api/data'
-import type { GameReview, SiteConfig, SortingData } from '../types'
+import { fetchReviews, fetchSite, fetchSorting, fetchSoundtracks } from '../api/data'
+import type { GameReview, SiteConfig, SoundtracksData, SortingData } from '../types'
 import { DEFAULT_RANKING, DEFAULT_SORTING_DESCRIPTIONS, sortReviews } from '../utils/reviewSort'
 
 export type SiteData = {
   site: SiteConfig
   reviews: GameReview[]
   sorting: SortingData
+  soundtracks: SoundtracksData
 }
 
 const FALLBACK_SORTING: SortingData = {
   descriptions: DEFAULT_SORTING_DESCRIPTIONS,
+  ranking: DEFAULT_RANKING,
+}
+
+const FALLBACK_SOUNDTRACKS: SoundtracksData = {
+  description: DEFAULT_SORTING_DESCRIPTIONS.soundtrack,
   ranking: DEFAULT_RANKING,
 }
 
@@ -28,13 +34,20 @@ export function useSiteData(): {
       fetchSite(),
       fetchReviews(),
       fetchSorting().catch(() => FALLBACK_SORTING),
+      fetchSoundtracks().catch(() => FALLBACK_SOUNDTRACKS),
     ])
-      .then(([site, reviews, sorting]) => {
+      .then(([site, reviews, sorting, soundtracks]) => {
         if (!cancelled) {
           setData({
             site,
-            reviews: sortReviews(reviews, 'release', sorting?.ranking ?? DEFAULT_RANKING),
+            reviews: sortReviews(
+              reviews,
+              'release',
+              sorting?.ranking ?? DEFAULT_RANKING,
+              soundtracks?.ranking ?? DEFAULT_RANKING,
+            ),
             sorting: sorting ?? FALLBACK_SORTING,
+            soundtracks: soundtracks ?? FALLBACK_SOUNDTRACKS,
           })
         }
       })

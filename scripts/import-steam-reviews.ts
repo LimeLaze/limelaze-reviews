@@ -218,6 +218,20 @@ async function main(): Promise<void> {
     ),
   )
 
+  const trailers = new Map(
+    existing.flatMap((review) => {
+      const trailer = review.trailer ?? review.trailerUrl
+      return review.steamAppId != null && trailer != null ? [[review.steamAppId, trailer] as const] : []
+    }),
+  )
+
+  const soundtracks = new Map(
+    existing.flatMap((review) => {
+      const soundtrack = review.soundtrack ?? review.soundtrackUrl
+      return review.steamAppId != null && soundtrack != null ? [[review.steamAppId, soundtrack] as const] : []
+    }),
+  )
+
   const parsed = await fetchReviewsSince(MIN_YEAR)
   const imported: GameReview[] = []
 
@@ -225,6 +239,8 @@ async function main(): Promise<void> {
     const app = await fetchAppInfo(review.steamAppId)
     const rating = ratings.get(review.steamAppId)
     const verdict = verdicts.get(review.steamAppId) ?? (review.recommended ? 'Recommended' : 'Not recommended')
+    const trailer = trailers.get(review.steamAppId)
+    const soundtrack = soundtracks.get(review.steamAppId)
     imported.push({
       id: `steam-${review.steamAppId}`,
       slug: uniqueSlug(app.name, review.steamAppId, usedSlugs),
@@ -237,6 +253,8 @@ async function main(): Promise<void> {
       recommended: review.recommended,
       verdict,
       ...(rating != null ? { rating } : {}),
+      ...(trailer != null ? { trailer } : {}),
+      ...(soundtrack != null ? { soundtrack } : {}),
     })
     console.log(`${review.postedOn}  ${app.name}`)
     await sleep(200)

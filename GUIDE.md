@@ -40,10 +40,15 @@ Edit `public/data/reviews.json`. Each entry follows this structure:
   "body": "First paragraph.\n\nSecond paragraph.",
   "recommended": true,
   "verdict": "A roguelike masterpiece with endless charm and polish.",
-  "rating": 10
+  "rating": 10,
+  "trailer": "https://www.youtube.com/watch?v=mD8x5xLHRho",
+  "soundtrack": "https://www.youtube.com/watch?v=yKqYp20_V38"
 }
 ```
 
+- **`trailer`** *(optional)*: Full YouTube link (e.g. `https://www.youtube.com/watch?v=...`, `https://youtu.be/...`) or raw video ID for the official game trailer. Shows a **"▶ Watch Trailer"** toggle button in the dialog.
+- **`soundtrack`** *(optional)*: Full YouTube link or raw video ID for an example song from the soundtrack. Shows an **"♪ Example of the Soundtrack"** toggle button in the dialog.
+  - If a game has no trailer or soundtrack added (like `SUPERHOT`), the respective button will automatically stay hidden.
 - **`body`**: The full review essay. Blank lines (`\n\n`) render as clean paragraph breaks. There is no length limit; long reviews will scroll cleanly within the dialog.
 - **`postedOn`** *(optional, YYYY-MM-DD)*: The release/posted date of the review. The site automatically parses this date and sorts the grid chronologically (newest first). You can paste or append new entries anywhere in `reviews.json` (top or bottom), and they will automatically appear in their exact chronological position on the site!
 - **`verdict`** *(optional)*: An easy-to-edit single sentence summarizing your review (or custom verdict phrase). It displays right beneath the game title in the review dialog in Steam Blue, styled slightly larger than body text for emphasis. If omitted, it falls back to `"Recommended"` or `"Not recommended"`.
@@ -137,12 +142,13 @@ The About Me page is located at `/about` and configured in `public/data/about.js
 
 ## Grid Sorting & Mobile Layout
 
-Directly below the year title (`Games I've played in {year}`), four small centered buttons allow sorting reviews on the fly, with an editable description displayed directly beneath the buttons:
+Directly below the year title (`Games I've played in {year}`), five small centered buttons allow sorting reviews on the fly, with an editable description displayed directly beneath the buttons:
 
 1. **Release Order**: Chronological order the reviews were posted (newest to oldest, default).
 2. **Perfectly Ranked**: Your personal definitive ranking from best to worst, configured in `public/data/sorting.json`.
-3. **Rating**: Highest score first (10 down to 0), with ties broken by review release order.
-4. **Alphabetical**: Alphabetical (A–Z) by game title.
+3. **Soundtracks Ranked**: Your personal ranking of game soundtracks, configured in `public/data/soundtracks.json`.
+4. **Rating**: Highest score first (10 down to 0), with ties broken by review release order.
+5. **Alphabetical**: Alphabetical (A–Z) by game title.
 
 ### Configuring "Perfectly Ranked" & Sort Descriptions
 
@@ -166,11 +172,32 @@ The sorting behavior, descriptions, and custom ranking order are stored in `publ
 }
 ```
 
-- **Editable Descriptions**: You can edit any of the four description strings under `"descriptions"` to explain the sorting order in your own words. The description for the active sort mode is rendered centered right between the sort buttons and the game grid.
+- **Editable Descriptions**: You can edit any of the description strings under `"descriptions"` to explain the sorting order in your own words. The description for the active sort mode is rendered centered right between the sort buttons and the game grid.
 - **Reordering "Perfectly Ranked"**: To change the order of games, simply move lines up or down in the `"ranking"` list.
 - **Adding New Games to the Ranking**: When you review a new game, just type its name anywhere into the `"ranking"` list at your desired position. If a game on the grid hasn't been added to the `"ranking"` list yet, it will automatically place after the ranked games at the end of the grid.
-- **Ranking Numbers on Covers**: When viewing the "Perfectly Ranked" sort mode, every cover displays its rank badge (e.g. `#1`, `#2`, `#3`...) at the bottom right. The numbers are white by default. To customize the colors of the top 3 (e.g. gold, silver, bronze), you can adjust `--rank-1-color`, `--rank-2-color`, and `--rank-3-color` in `src/index.css` (or edit `.cover-rank.is-rank-1`, `.is-rank-2`, `.is-rank-3`).
+- **Ranking Numbers on Covers**: When viewing either the "Perfectly Ranked" or "Soundtracks Ranked" sort mode, every cover displays its rank badge (e.g. `#1`, `#2`, `#3`...) at the bottom right. The numbers are white by default, with `#1` through `#3` styled with gold highlights.
 - **Mobile view**: When viewed on phones (screen width ≤ 640px), the grid automatically aligns **3 games next to each other per row** with optimized gaps and badge sizes.
+
+### Configuring "Soundtracks Ranked"
+
+The soundtrack ranking order and description are stored in `public/data/soundtracks.json`:
+
+```json
+{
+  "description": "Ranked by my personal favorite game soundtracks from best to worst.",
+  "ranking": [
+    "Spiritfarer",
+    "Bloodborne",
+    "Slay the Princess",
+    "In Stars And Time",
+    "..."
+  ]
+}
+```
+
+- **`description`**: The centered description displayed below the sort buttons when "Soundtracks Ranked" is selected.
+- **`ranking`**: Your personal ranking of games based on their soundtracks from #1 to last. Just move game names up or down to reorder them however you like!
+- Games not yet added to the list will automatically place after the ranked games. Covers display their `#1`, `#2`, `#3`... rank badges on the grid when this sort option is active.
 
 ---
 

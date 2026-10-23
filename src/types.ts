@@ -25,6 +25,12 @@ export type GameReview = {
   summary?: string
   /** Whole number from 0 to 10. Omit when the game has no score. */
   rating?: number
+  /** YouTube video URL or ID for the game trailer. */
+  trailer?: string
+  trailerUrl?: string
+  /** YouTube video URL or ID for an example song/soundtrack. */
+  soundtrack?: string
+  soundtrackUrl?: string
 }
 
 export type Top20Game = {
@@ -51,12 +57,18 @@ export type EveryGameData = {
   games: string[]
 }
 
-export type SortMode = 'release' | 'perfect' | 'rating' | 'alphabetical'
+export type SortMode = 'release' | 'perfect' | 'soundtrack' | 'rating' | 'alphabetical'
 
 export type SortingDescriptions = Partial<Record<SortMode, string>>
 
 export type SortingData = {
   descriptions?: SortingDescriptions
+  ranking?: string[]
+}
+
+export type SoundtracksData = {
+  description?: string
+  descriptions?: Partial<Record<string, string>>
   ranking?: string[]
 }
 

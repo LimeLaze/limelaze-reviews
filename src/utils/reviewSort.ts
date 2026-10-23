@@ -5,6 +5,7 @@ export type { SortMode }
 export const DEFAULT_SORTING_DESCRIPTIONS: Record<SortMode, string> = {
   release: 'Reviews in order of release date, newest to oldest.',
   perfect: 'My personal definitive ranking from best to worst.',
+  soundtrack: 'Ranked by my personal favorite game soundtracks.',
   rating: 'Sorted by rating (10 to 0), with release order breaking ties.',
   alphabetical: 'Sorted alphabetically by title from A to Z.',
 }
@@ -142,6 +143,7 @@ export function compareReleaseDate(a: GameReview, b: GameReview): number {
  * Sorts an array of reviews based on the chosen SortMode.
  * - 'release': Newest release date first.
  * - 'perfect': Ranked according to ranking list (1st to last); unranked at the end.
+ * - 'soundtrack': Ranked according to soundtrack ranking list (1st to last); unranked at the end.
  * - 'rating': Highest rating first; ties broken by release date (newest first).
  * - 'alphabetical': Game title A-Z; ties broken by release date (newest first).
  */
@@ -149,13 +151,15 @@ export function sortReviews(
   reviews: GameReview[],
   sortMode: SortMode,
   ranking: string[] = DEFAULT_RANKING,
+  soundtrackRanking: string[] = DEFAULT_RANKING,
 ): GameReview[] {
   const indexed = reviews.map((review, index) => ({ review, index }))
 
   indexed.sort((a, b) => {
-    if (sortMode === 'perfect') {
-      const rankA = findReviewRank(a.review, ranking)
-      const rankB = findReviewRank(b.review, ranking)
+    if (sortMode === 'perfect' || sortMode === 'soundtrack') {
+      const activeList = sortMode === 'soundtrack' ? soundtrackRanking : ranking
+      const rankA = findReviewRank(a.review, activeList)
+      const rankB = findReviewRank(b.review, activeList)
 
       if (rankA !== -1 && rankB !== -1) {
         if (rankA !== rankB) {
