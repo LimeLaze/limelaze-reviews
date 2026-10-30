@@ -219,7 +219,25 @@ The years shown in the top navigation bar are defined in `public/data/site.json`
 
 - When a year has no reviews yet (like `2027`), it displays a centered **"Oops, no reviews here yet"** empty state.
 - As soon as a review with `"year": 2027` is added to `public/data/reviews.json`, its covers automatically replace the empty message.
-- The homepage automatically redirects to the newest year that actually has reviews.
+
+---
+
+## Home Page
+
+The home page is located at `/` and configured in `public/data/home.json`. Clicking the **"Lime's Den of Reviews"** logo in the header always navigates back to the home page.
+
+```json
+{
+  "title": "Lime's Den of Reviews",
+  "description": "Welcome to Lime's Den of Reviews! A personal space where I share my honest thoughts, scores, and soundtrack impressions on video games I've played. Browse through reviews by year, explore my top 20 games of all time, or search the complete list of every game I've beaten."
+}
+```
+
+- **Logo:** Displays "Lime's Den of Reviews" front and center in the brand accent green (`#c6f54a`), matching the header typography.
+- **Site Description:** Easily editable in `public/data/home.json`. Displayed with clean text under the logo without surrounding boxes.
+- **Latest Review Showcase:** Automatically detects and displays your most recently released review. It shares the exact same formatting, cover, rating, verdict, and trailer/soundtrack media toggle buttons as the review modal, but rendered directly on the page without needing to click into dialogs.
+- **"The latest review of mine":** Title sits right above the review box, aligned with its left edge.
+- **"Check out my other reviews from this year &rarr;":** Hyperlink below the review box, aligned with its right edge. It automatically points to the current active review year (e.g. `/2026`, and automatically `/2027` next year).
 
 ---
 

@@ -5,7 +5,7 @@ import '@fontsource-variable/geist'
 import App from './App.tsx'
 import { AboutPage } from './pages/AboutPage.tsx'
 import { EveryGamePage } from './pages/EveryGamePage.tsx'
-import { HomeRedirect } from './pages/HomeRedirect.tsx'
+import { HomePage } from './pages/HomePage.tsx'
 import { Top20Page } from './pages/Top20Page.tsx'
 import { YearPage } from './pages/YearPage.tsx'
 import './index.css'
@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter basename={routerBasename}>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route index element={<HomeRedirect />} />
+          <Route index element={<HomePage />} />
           <Route path="top-20" element={<Top20Page />} />
           <Route path="every-game" element={<EveryGamePage />} />
           <Route path="about" element={<AboutPage />} />

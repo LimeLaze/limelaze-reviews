@@ -51,6 +51,11 @@ export type AboutData = {
   content: string
 }
 
+export type HomeData = {
+  title?: string
+  description?: string
+}
+
 export type EveryGameData = {
   title?: string
   description?: string

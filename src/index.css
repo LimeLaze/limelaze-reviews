@@ -444,17 +444,21 @@ h2 {
   z-index: 20;
 }
 
-.dialog {
+.dialog,
+.home-review-card {
   display: grid;
   grid-template-columns: 160px 1fr;
   gap: 1.25rem;
   width: min(760px, 100%);
-  max-height: min(92svh, 960px);
-  overflow: auto;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   box-shadow: 0 24px 60px var(--shadow);
   padding: 1.25rem;
+}
+
+.dialog {
+  max-height: min(92svh, 960px);
+  overflow: auto;
 }
 
 .dialog-cover-wrap {
@@ -494,7 +498,8 @@ h2 {
   color: var(--not-recommend);
 }
 
-.dialog h2 {
+.dialog h2,
+.home-review-card h2 {
   margin: 0.35rem 0 0.5rem;
   font-size: 1.8rem;
 }
@@ -618,6 +623,73 @@ h2 {
 .social-links a:hover,
 .social-links a:focus-visible {
   color: var(--accent);
+}
+
+/* Home Page */
+.home-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 0.5rem 3.5rem;
+}
+
+.home-hero {
+  text-align: center;
+  margin: 0 auto 3.25rem;
+  max-width: 700px;
+}
+
+.home-logo {
+  color: var(--accent);
+  font-size: clamp(2.35rem, 5.5vw, 3.8rem);
+  font-weight: 750;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.home-description {
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  margin: 0 auto;
+  white-space: pre-wrap;
+}
+
+.home-latest-section {
+  width: min(760px, 100%);
+  margin: 0 auto;
+}
+
+.home-latest-title {
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--heading);
+  letter-spacing: -0.02em;
+  margin: 0 0 0.85rem;
+}
+
+.home-latest-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.home-other-reviews-link {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: opacity 140ms ease;
+}
+
+.home-other-reviews-link:hover,
+.home-other-reviews-link:focus-visible {
+  opacity: 0.82;
+  text-decoration: underline;
 }
 
 /* Page headings for Top 20 & About */
@@ -1050,9 +1122,37 @@ h2 {
     padding: 0.75rem;
   }
 
-  .dialog {
+  .dialog,
+  .home-review-card {
     grid-template-columns: 1fr;
     padding: 1.15rem;
+  }
+
+  .home-page {
+    padding: 0.75rem 0.25rem 2.5rem;
+  }
+
+  .home-hero {
+    margin-bottom: 2.25rem;
+  }
+
+  .home-logo {
+    margin-bottom: 0.85rem;
+  }
+
+  .home-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 0 0.25rem;
+  }
+
+  .home-latest-title {
+    font-size: 1.05rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .home-other-reviews-link {
+    font-size: 0.88rem;
   }
 
   .dialog-cover-wrap {
