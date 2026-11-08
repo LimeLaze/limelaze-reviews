@@ -142,7 +142,7 @@ The About Me page is located at `/about` and configured in `public/data/about.js
 
 ## Grid Sorting & Mobile Layout
 
-Directly below the year title (`Games I've played in {year}`), five small centered buttons allow sorting reviews on the fly, with an editable description displayed directly beneath the buttons:
+Directly below the year title (`Games I've played in {year}`), the total number of reviews written for that year is displayed (`Total Reviews: {number}`). Beneath that, five small centered buttons allow sorting reviews on the fly, with an editable description displayed directly beneath the buttons:
 
 1. **Release Order**: Chronological order the reviews were posted (newest to oldest, default).
 2. **Perfectly Ranked**: Your personal definitive ranking from best to worst, configured in `public/data/sorting.json`.

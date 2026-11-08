@@ -301,7 +301,15 @@ h2 {
   font-size: clamp(1.75rem, 3.5vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.02em;
-  margin: 0.5rem 0 1rem;
+  margin: 0.5rem 0 0.4rem;
+}
+
+.grid-total-reviews {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 1rem;
 }
 
 .grid-sort-controls {
@@ -1039,7 +1047,12 @@ h2 {
 
   .grid-title {
     font-size: 1.4rem;
-    margin: 0.25rem 0 0.75rem;
+    margin: 0.25rem 0 0.3rem;
+  }
+
+  .grid-total-reviews {
+    font-size: 0.78rem;
+    margin: 0 0 0.75rem;
   }
 
   .grid-sort-controls {

@@ -24,7 +24,7 @@ interface SortOption {
 }
 
 const SORT_OPTIONS: SortOption[] = [
-  { id: 'release', label: 'Release Order', title: 'Sort by review release order' },
+  { id: 'release', label: 'Review Release Order', title: 'Sort by review release order' },
   { id: 'perfect', label: 'Perfectly Ranked', title: 'Sort by my personal definitive ranking' },
   { id: 'soundtrack', label: 'Soundtracks Ranked', title: 'Sort by my personal soundtrack ranking' },
   { id: 'rating', label: 'Rating', title: 'Sort by rating (highest first)' },
@@ -61,6 +61,7 @@ export function ReviewGrid({ year, reviews, sorting, soundtracks }: ReviewGridPr
   return (
     <div className="year-grid-section">
       <h1 className="grid-title">Games I've played in {year}</h1>
+      <p className="grid-total-reviews">Total number of games: {reviews.length}</p>
       <div className="grid-sort-controls" role="group" aria-label="Sort reviews">
         <span className="sort-label">Sort by</span>
         {SORT_OPTIONS.map((option) => (
